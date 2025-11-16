@@ -203,8 +203,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const customJsonUrl = urlParams.get('json');
 
-        // Use relative path - works for both local and GitHub Pages
-        let jsonUrl = customJsonUrl || './staroriga_filtered.json';
+        // Always use relative path - works for both local server and GitHub Pages
+        let jsonUrl = customJsonUrl || 'staroriga_filtered.json';
 
         // Load JSON data
         console.log('Loading JSON from:', jsonUrl);
