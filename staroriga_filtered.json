@@ -24,6 +24,13 @@
       "link_url": "https://staroriga.lv/lv/objekti-2025/aiz-apvarsna/"
     },
     {
+      "image_url": "https://apkaimes.lv/wp-content/uploads/2022/12/52537149166_5e06466933_c.jpg",
+      "alt": "ZIEMASSVĒTKU ROTĀJUMI",
+      "header": "ZIEMASSVĒTKU ROTĀJUMI",
+      "description": "",
+      "link_url": "ZIEMASSVĒTKU ROTĀJUMI"
+    },
+    {
       "image_url": "https://staroriga.lv/wp-content/uploads/2025/11/krasas-1024x1024.jpg",
       "alt": "RĪTAUSMA. MIRKLIS PIRMS. KRĀSAS.",
       "header": "RĪTAUSMA. MIRKLIS PIRMS. KRĀSAS.",
@@ -302,13 +309,6 @@
       "header": "KALPAKA REZIDENCE MIRDZ NO JAUNA",
       "description": "",
       "link_url": "https://staroriga.lv/lv/objekti-2025/kalpaka-rezidence-mirdz-no-jauna-2/"
-    },
-    {
-      "image_url": "https://apkaimes.lv/wp-content/uploads/2022/12/52537149166_5e06466933_c.jpg",
-      "alt": "ZIEMASSVĒTKU ROTĀJUMI",
-      "header": "ZIEMASSVĒTKU ROTĀJUMI",
-      "description": "",
-      "link_url": "ZIEMASSVĒTKU ROTĀJUMI"
     }
   ]
 }
