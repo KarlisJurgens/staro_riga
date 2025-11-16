@@ -277,7 +277,13 @@
                 const rating = parseInt(e.target.dataset.rating);
                 const item = data.items[currentIndex];
 
-                // Save rating
+                // Remove existing rating for this item if any
+                const existingRatingIndex = ratings.findIndex(r => r.header === item.header);
+                if (existingRatingIndex !== -1) {
+                    ratings.splice(existingRatingIndex, 1);
+                }
+
+                // Save new rating
                 ratings.push({
                     header: item.header,
                     rating: rating,
@@ -327,13 +333,13 @@
         document.getElementById('backBtn').addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                // Remove last rating if it exists for this index
-                if (ratings.length > 0 && ratings[ratings.length - 1]) {
-                    const lastRating = ratings[ratings.length - 1];
-                    const currentItem = data.items[currentIndex];
-                    // Check if last rating was for next item (the one we're going back from)
-                    if (lastRating.header === data.items[currentIndex + 1]?.header) {
-                        ratings.pop();
+                // Remove the rating for the item we're going back from
+                const previousItem = data.items[currentIndex + 1];
+                if (previousItem) {
+                    // Find and remove rating for the previous item
+                    const ratingIndex = ratings.findIndex(r => r.header === previousItem.header);
+                    if (ratingIndex !== -1) {
+                        ratings.splice(ratingIndex, 1);
                     }
                 }
                 showCurrentItem();
