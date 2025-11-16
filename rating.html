@@ -199,27 +199,12 @@
         let currentIndex = 0;
         let ratings = [];
 
-        // Determine JSON source - use URL parameter or default to local/GitHub
+        // Determine JSON source - use URL parameter or default to relative path
         const urlParams = new URLSearchParams(window.location.search);
         const customJsonUrl = urlParams.get('json');
 
-        // Default: try local first, fallback to GitHub raw URL
-        let jsonUrl = customJsonUrl || 'staroriga_filtered.json';
-
-        // If on GitHub Pages or raw.githack, use the raw GitHub URL
-        if ((window.location.hostname.includes('github.io') || window.location.hostname.includes('githack')) && !customJsonUrl) {
-            const pathParts = window.location.pathname.split('/');
-            const username = pathParts[1]; // GitHub username
-            const repo = pathParts[2]; // Repository name
-            jsonUrl = `https://raw.githubusercontent.com/${username}/${repo}/main/staroriga_filtered.json`;
-        }
-
-        // If on raw.githubusercontent.com, construct the JSON path relative to HTML
-        if (window.location.hostname.includes('raw.githubusercontent.com') && !customJsonUrl) {
-            const currentPath = window.location.pathname;
-            const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
-            jsonUrl = window.location.origin + basePath + '/staroriga_filtered.json';
-        }
+        // Use relative path - works for both local and GitHub Pages
+        let jsonUrl = customJsonUrl || './staroriga_filtered.json';
 
         // Load JSON data
         fetch(jsonUrl)
