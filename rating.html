@@ -182,6 +182,7 @@
                 <span class="star" data-rating="7">★</span>
             </div>
             <div class="buttons">
+                <button class="skip-btn" id="backBtn">Back</button>
                 <button class="skip-btn" id="skipBtn">Skip</button>
             </div>
         </div>
@@ -310,6 +311,23 @@
                     s.classList.remove('active');
                 });
             });
+        });
+
+        // Back functionality
+        document.getElementById('backBtn').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                // Remove last rating if it exists for this index
+                if (ratings.length > 0 && ratings[ratings.length - 1]) {
+                    const lastRating = ratings[ratings.length - 1];
+                    const currentItem = data.items[currentIndex];
+                    // Check if last rating was for next item (the one we're going back from)
+                    if (lastRating.header === data.items[currentIndex + 1]?.header) {
+                        ratings.pop();
+                    }
+                }
+                showCurrentItem();
+            }
         });
 
         // Skip functionality
