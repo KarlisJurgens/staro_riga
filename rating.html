@@ -207,14 +207,18 @@
         let jsonUrl = customJsonUrl || './staroriga_filtered.json';
 
         // Load JSON data
+        console.log('Loading JSON from:', jsonUrl);
         fetch(jsonUrl)
             .then(response => {
+                console.log('Response status:', response.status);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(jsonData => {
+                console.log('JSON loaded:', jsonData);
+                console.log('Items count:', jsonData.items ? jsonData.items.length : 'No items');
                 data = jsonData;
                 showCurrentItem();
             })
@@ -224,12 +228,27 @@
             });
 
         function showCurrentItem() {
-            if (!data || currentIndex >= data.items.length) {
+            console.log('showCurrentItem called. currentIndex:', currentIndex, 'data:', data);
+
+            if (!data) {
+                console.error('No data loaded');
+                return;
+            }
+
+            if (!data.items) {
+                console.error('No items in data');
+                return;
+            }
+
+            if (currentIndex >= data.items.length) {
+                console.log('All items rated, showing results');
                 showResults();
                 return;
             }
 
             const item = data.items[currentIndex];
+            console.log('Showing item:', item);
+
             document.getElementById('header').textContent = item.header;
             document.getElementById('image').src = item.image_url;
             document.getElementById('image').alt = item.alt;
