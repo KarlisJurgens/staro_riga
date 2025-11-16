@@ -61,13 +61,14 @@
 
         .stars-container {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .star {
-            font-size: 50px;
+            font-size: 36px;
             cursor: pointer;
             transition: transform 0.2s, color 0.2s;
             color: #444;
@@ -75,8 +76,17 @@
         }
 
         .star:hover {
-            transform: scale(1.2);
+            transform: scale(1.15);
             color: #ffd700;
+        }
+
+        @media (max-width: 480px) {
+            .star {
+                font-size: 32px;
+            }
+            .stars-container {
+                gap: 8px;
+            }
         }
 
         .star.active {
